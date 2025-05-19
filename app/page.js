@@ -1,103 +1,122 @@
-import Image from "next/image";
+"use client"; // (if you're using Next.js 13+ App Router)
+import React from "react";
 
-export default function Home() {
+import { useRef, useEffect } from "react";
+import { gsap } from "gsap";
+
+function Home() {
+  const boxRef = useRef(null);
+  const box2Ref = useRef(null);
+  const box3Ref = useRef(null);
+  const loaderRef = useRef(null);
+  const greenRef = useRef(null);
+  const childRef = useRef(null);
+  const revealRef = useRef(null);
+  const parentRef = useRef(null);
+
+  const heading = useRef(null);
+  useEffect(() => {
+    const tl = gsap.timeline();
+    const box = boxRef.current;
+    const head = heading.current;
+    const box2 = box2Ref.current;
+    const box3 = box3Ref.current;
+    const child = childRef.current;
+    const reveal = revealRef.current;
+    const parent = parentRef.current;
+    tl.from(".child span", {
+      x: "50%",
+      ease: "power3.easeInOut",
+      duration: 2,
+      stagger: 0.2,
+      opacity: 0,
+    }).to(child, {
+      y: "-100%",
+      delay:1,
+      ease: "circ.easeInOut",
+      duration: 1,
+    }).to(".loader",{
+      height: "0vh",
+      duration: 1,
+      ease: "power3.easeInOut",
+    }).to(".green", {
+height: "100vh",
+top:"0",
+duration:1,
+delay:-0.5,
+ease:'circ.inOut',
+    }
+    ).to(".green",{
+      height:"0vh",
+      duration: 1,
+      delay: -0.2,
+      ease:'circ.inOut',
+
+    })
+    // tl.to(box, {
+    //   height: "0",
+    //   ease: "expo.inOut",
+    //   duration: 2,
+    // })
+    //   .to(box2, {
+    //     height: "100%",
+    //     ease: "expo.inOut",
+    //     duration: 2,
+    //     delay: -2,
+    //   })
+    //   .to(box3, {
+    //     height: "100%",
+    //     ease: "expo.inOut",
+    //     duration: 2,
+    //     delay: -1.6,
+    //   });
+  }, []);
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <main id="main" className=" w-[100%] h-[100vh] relative">
+      <h1 className=" ">
+        <span className=" block  ">
+          <span className=" block transform  translate-y-[100%]">
+            Hey I Am Rajib
+          </span>
+        </span>
+      </h1>
+      <div ref={loaderRef} className="loader w-[100%] h-[100vh] bg-black">
+        <div className=" topheading absolute top-[5%] left-[50%] transform -translate-x-[50%]">
+          <h5 className=" reveal font-cascadia">Design Porfolios</h5>
+          <h5 className=" reveal font-cascadia">&copy; 2025</h5>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+        <h1
+          ref={revealRef}
+          className=" reveal  absolute top-[50%] left-[50%] transform -translate-x-[50%] -translate-y-[50%] text-[4vh]  flex justify-center  text-white font-medium "
         >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+          {" "}
+          <span
+            ref={parentRef}
+            className="parent overflow-hidden flex justify-center  "
+          >
+            {" "}
+            <span ref={childRef} className="child block transform  ">
+              {" "}
+              <span>Rajib</span> <span className=" font-cascadia">Debnath</span>{" "}
+              <span>Is Here</span>{" "}
+            </span>{" "}
+          </span>{" "}
+        </h1>
+      </div>
+      <div className="green absolute top-[100%] w-[100%] h-[0vh] bg-green-300 "></div>
+      {/* <div ref={boxRef} className=" w-screen  h-[100%]   bg-black  "></div>
+      <div
+        ref={box2Ref}
+        className=" w-screen  absolute bottom-0 bg-teal-500 h-0 "
+      >
+        <div
+          ref={box3Ref}
+          className=" w-screen  absolute bottom-0  bg-pink-500 h-0 "
+        ></div>
+      </div> */}
+    </main>
   );
 }
+
+export default Home;

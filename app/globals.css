@@ -1,26 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Cascadia+Mono:ital,wght@0,200..700;1,200..700&family=Orbitron:wght@400..900&display=swap');
 @import "tailwindcss";
+:root{ 
+  box-sizing: border-box;
+  padding: 0%;
+  margin: 0%;
+}
+.topheading h5 {
+  text-align: center;
+font-size: 13px;
+font-weight:300;
+text-transform: uppercase;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+}
+.child span{
+  display: inline-block;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+@theme {
+ --font-cascadia:"Cascadia Mono", sans-serif ;
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
 }
