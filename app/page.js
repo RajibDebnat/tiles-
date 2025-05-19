@@ -43,15 +43,19 @@ function Home() {
 height: "100vh",
 top:"0",
 duration:1,
-delay:-0.5,
+// delay:-0.5,
 ease:'circ.inOut',
     }
     ).to(".green",{
       height:"0vh",
       duration: 1,
-      delay: -0.2,
+      // delay: ,
       ease:'circ.inOut',
 
+    }).to('.green-child',{
+     translateY:"-100%",
+      duration: 2,
+      ease:'pwer3.inOut',
     })
     // tl.to(box, {
     //   height: "0",
@@ -75,11 +79,11 @@ ease:'circ.inOut',
   return (
     <main id="main" className=" w-[100%] h-[100vh] relative">
       <h1 className=" ">
-        <span className=" block  ">
+        {/* <span className=" block  ">
           <span className=" block transform  translate-y-[100%]">
             Hey I Am Rajib
           </span>
-        </span>
+        </span> */}
       </h1>
       <div ref={loaderRef} className="loader w-[100%] h-[100vh] bg-black">
         <div className=" topheading absolute top-[5%] left-[50%] transform -translate-x-[50%]">
@@ -96,15 +100,19 @@ ease:'circ.inOut',
             className="parent overflow-hidden flex justify-center  "
           >
             {" "}
-            <span ref={childRef} className="child block transform  ">
+            <span ref={childRef} className="child block transform  font-cascadia ">
               {" "}
-              <span>Rajib</span> <span className=" font-cascadia">Debnath</span>{" "}
+              <span>Emopwer</span> <span className=" font-cascadia">Media</span>{" "}
               <span>Is Here</span>{" "}
             </span>{" "}
           </span>{" "}
         </h1>
       </div>
-      <div className="green absolute top-[100%] w-[100%] h-[0vh] bg-green-300 "></div>
+      <div className="green absolute overflow-hidden top-[100%] w-[100%] h-[0vh] bg-green-300  uppercase font-cascadia">
+       <span className=" green-child   ">Simpolo</span> 
+        </div>
+
+      <div id="home" className=" bg-[#dadada] h-[100%] w-[100%]"></div>
       {/* <div ref={boxRef} className=" w-screen  h-[100%]   bg-black  "></div>
       <div
         ref={box2Ref}
